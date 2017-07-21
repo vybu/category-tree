@@ -1,0 +1,24 @@
+.Category {
+    padding: 10px 10px 10px 16px;
+    margin: 8px;
+}
+
+.Category-addInput {
+    padding: 4px;
+    margin-left: 6px;
+}
+
+.Category-addButton {
+    padding: 4px;
+    margin-left: 6px;
+}
+
+.Category-showAddNewForm {
+    padding: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.Category-addNewForm {
+    margin-top: 6px;
+}
