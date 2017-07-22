@@ -1,0 +1,20 @@
+.ImplementationSwitcher {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.ImplementationSwitcher-choice {
+    margin-left: 5px;
+    color:  rgba(0, 0, 0, 0.6);
+}
+
+.ImplementationSwitcher-choice:hover {
+    color:  rgba(0, 0, 0, 0.8);    
+}
+
+.ImplementationSwitcher-choice.is-active {
+    color: black;
+    
+}

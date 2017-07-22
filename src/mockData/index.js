@@ -1,34 +1,46 @@
 const tree = [
     {
-        category: 'Category1',
-        id: '1',
+        value: 'Category1',
         subcategories: [
             {
-                category: 'Subcategory1',
-                subcategories: [],
-                id: '2'
+                value: 'Subcategory1',
+                subcategories: []
             },
             {
-                category: 'Subcategory2',
-                subcategories: [],
-                id: '3'
+                value: 'Subcategory2',
+                subcategories: []
             },
             {
-                category: 'Subcategory3',
+                value: 'Subcategory3',
                 subcategories: [
                     {
-                        category: 'SubSubcategory1',
-                        subcategories: [],
-                        id: '4'
+                        value: 'SubSubcategory1',
+                        subcategories: []
                     }
                 ]
             }
         ]
     },
     {
-        category: 'Category2',
-        subcategories: [],
-        id: '5'
+        value: 'Category2',
+        subcategories: []
+    },
+    {
+        value: 'Category3',
+        subcategories: []
+    },
+    {
+        value: 'Category4',
+        subcategories: [
+            {
+                value: 'Subcategory1',
+                subcategories: []
+            },
+            {
+                value: 'Subcategory2',
+                subcategories: []
+            }
+        ]
     }
 ];
 

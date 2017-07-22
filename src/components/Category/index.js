@@ -1,3 +1,4 @@
 import Category from './Category.js';
+import CategoryEnhancedForRecursive from './CategoryEnhancedForRecursive.js';
 
-export default Category;
+export { Category, CategoryEnhancedForRecursive };

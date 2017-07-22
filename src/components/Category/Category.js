@@ -1,60 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './category.css';
+import AddSubcategoryForm from './AddSubcategoryForm.js';
+import './Category.css';
 
 class Category extends React.Component {
+    static PropTypes = {
+        id: PropTypes.string.isRequired,
+        value: PropTypes.objectOf([PropTypes.string, PropTypes.value]).isRequired,
+        handleAddSubcategory: PropTypes.func,
+        handleRemoveSubcategory: PropTypes.func
+    };
+
     state = {
         isAddNewVisible: false
     };
 
-    showAddNew = () => this.setState(() => ({ isAddNewVisible: true }));
+    toggleAddNew = () => this.setState(({ isAddNewVisible }) => ({ isAddNewVisible: !isAddNewVisible }));
 
-    static PropTypes = {
-        node: PropTypes.object.isRequired,
-        getSubcategories: PropTypes.func,
-        subcategories: PropTypes.array,
-        handleAddSubcategory: PropTypes.func
+    handleAddSubcategory = subcategoryName => {
+        this.props.handleAddSubcategory(this.props.id, subcategoryName);
+        this.toggleAddNew();
     };
 
-    handleAddSubcategory = () => {
-        this.props.handleAddSubcategory(this.props.node, this.newSubcategoryName.value);
+    handleRemoveSubcategory = () => {
+        this.props.handleRemoveSubcategory(this.props.id);
     };
 
     render() {
-        const { node, getSubcategories, subcategories, handleAddSubcategory } = this.props;
+        const { value, children } = this.props;
         return (
             <div className="Category">
-                - {node.category}
-                {this.state.isAddNewVisible
-                    ? <div className="Category-addNewForm">
-                          <button className="Category-addButton" onClick={this.handleAddSubcategory}>
-                              Add New Subcategory
-                          </button>
-                          <input
-                              className="Category-addInput"
-                              ref={ref => (this.newSubcategoryName = ref)}
-                              type="text"
-                          />
-                      </div>
-                    : <span className="Category-showAddNewForm" onClick={this.showAddNew}>+</span>}
-                {getSubcategories &&
-                    getSubcategories().map(([node, getSubcategories]) =>
-                        <Category
-                            key={node.id}
-                            handleAddSubcategory={handleAddSubcategory}
-                            node={node}
-                            getSubcategories={getSubcategories}
-                        />
-                    )}
-                {subcategories &&
-                    subcategories.map(node =>
-                        <Category
-                            key={node.id}
-                            handleAddSubcategory={handleAddSubcategory}
-                            node={node}
-                            subcategories={node.subcategories}
-                        />
-                    )}
+                <span>
+                    &#187; {value}
+                </span>
+                <span className="Category-editAction" onClick={this.toggleAddNew}>
+                    add
+                </span>
+                <span className="Category-editAction" onClick={this.handleRemoveSubcategory}>
+                    remove
+                </span>
+                {this.state.isAddNewVisible && <AddSubcategoryForm onSubmit={this.handleAddSubcategory} />}
+                <div className="Category-subcategories">
+                    {children}
+                </div>
             </div>
         );
     }

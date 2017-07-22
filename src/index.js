@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import testTree from './mockData';
+import App from './components/App';
+import mockTree from './mockData';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<App testTree={testTree}/>, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <App categoryTree={mockTree} />
+    </BrowserRouter>,
+    document.getElementById('root')
+);
